@@ -14,7 +14,7 @@
 - name: Record project usage
   shell: ( echo "Project - {{ item }}" && openstack --os-cloud="{{ CLOUD_NAME }}"
          usage show --start {{ RPTSTART }} --end {{ RPTEND }} --project {{ item }} && echo " " ) >> {{ REPORT_DIR }}/os_usage_report_{{ lookup('pipe', 'date +%Y%m%d') }}.log
-  with_items: tenantid.stdout_lines
+  with_items: "{{ tenantid.stdout_lines }}"
 
 - name: Retrieve project usage report file
   fetch: src={{ REPORT_DIR }}/os_usage_report_{{ lookup('pipe', 'date +%Y%m%d') }}.log dest={{ REPORT_DEST }} flat=yes

@@ -1,6 +1,6 @@
 USE keystone;
 SELECT count(*) as total_users from user WHERE user.enabled=1;
-SELECT count(*) as total_tenants from project WHERE project.enabled=1;
+SELECT count(*) as total_projects from project WHERE project.enabled=1;
 USE cinder;
 SELECT count(*) as total_volumes, SUM(volumes.size) as total_volume_usage_GB from volumes
 WHERE volumes.status='available';

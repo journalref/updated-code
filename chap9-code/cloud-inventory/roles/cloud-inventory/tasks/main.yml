@@ -1,6 +1,6 @@
 ---
 - name: Create working directory
-  shell: mkdir {{ REPORT_DIR }}
+  file: path="{{ REPORT_DIR }}" state=directory
   ignore_errors: yes
 
 - name: Copy the cloud_report script
